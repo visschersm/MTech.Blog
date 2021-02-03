@@ -1,0 +1,23 @@
+﻿@page "/"
+
+@inject HttpClient Http
+
+<h1>Hello, world!</h1>
+
+Welcome to your new app.
+
+<SurveyPrompt Title="How is Blazor working for you?" />
+<h3>@blogPosts.Count()</h3>
+
+@code {
+    private class BlogPost
+    {
+        public int Id { get; set; }
+        public string Title { get; set; }
+    }
+
+    private BlogPost[] blogPosts;
+
+    protected override async Task OnInitializedAsync() =>
+        blogPosts = await Http.GetFromJsonAsync<BlogPost[]>("api/blog");
+}
