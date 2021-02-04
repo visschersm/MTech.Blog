@@ -7,7 +7,7 @@
 Welcome to your new app.
 
 <SurveyPrompt Title="How is Blazor working for you?" />
-<h3>@blogPosts.Count()</h3>
+@*<h3>@blogPosts.Count()</h3>*@
 
 @code {
     private class BlogPost
@@ -18,6 +18,9 @@ Welcome to your new app.
 
     private BlogPost[] blogPosts;
 
-    protected override async Task OnInitializedAsync() =>
+    protected override async Task OnInitializedAsync()
+    {
+        var response = await Http.GetAsync("api/blog");
         blogPosts = await Http.GetFromJsonAsync<BlogPost[]>("api/blog");
+    }
 }

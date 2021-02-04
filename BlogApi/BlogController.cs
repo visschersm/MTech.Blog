@@ -22,7 +22,7 @@ namespace BlogApi
         [HttpGet]
         public async Task<IActionResult> Get()
         {
-            var result = await context.BlogPosts.AsNoTracking()
+            tvar result = await context.BlogPosts.AsNoTracking()
                 .ToListAsync();
 
             return Ok(result);

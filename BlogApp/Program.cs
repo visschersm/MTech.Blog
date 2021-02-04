@@ -15,7 +15,7 @@ namespace BlogApp
 
             builder.Services.AddScoped(sp => new HttpClient
             {
-                //BaseAddress = new Uri(builder.HostEnvironment.BaseAddress) 
+                //BaseAddress = new Uri(builder.HostEnvironment.BaseAddress)
                 BaseAddress = new Uri("https://localhost:44372")
             });
 
